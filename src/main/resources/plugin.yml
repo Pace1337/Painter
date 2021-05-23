@@ -5,5 +5,5 @@ api-version: 1.8.8
 commands:
   Paint:
     description: Paint command.
-  Painting:
+  Painter:
     description: Painting alternative command.

@@ -13,6 +13,7 @@ public final class Painter extends JavaPlugin {
     @Override
     public void onEnable() {
         this.getCommand("paint").setExecutor(new PaintCommand(this));
+        this.getCommand("painter").setExecutor(new PaintCommand(this));
         this.getServer().getPluginManager().registerEvents(new PlayerInteract(this), this);
         // Plugin startup logic
     }

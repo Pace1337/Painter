@@ -21,6 +21,8 @@ public class PaintCommand implements CommandExecutor {
         //TODO Add player permission so it cannot be abused.
     }
     Player player = (Player) sender;
+    if (!player.hasPermission("paint.use")||!player.isOp())
+        return true;
     if (plugin.hasPainters()) {
         if (plugin.getPainters().contains(player)) {
             // Remove the painting player :thumb:.
