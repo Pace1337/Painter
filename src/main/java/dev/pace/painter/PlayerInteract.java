@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.material.MaterialData;
 import org.bukkit.util.BlockIterator;
 
 public class PlayerInteract implements Listener {
@@ -30,6 +31,8 @@ public class PlayerInteract implements Listener {
         if(bl == null)
             return;
         bl.setType(event.getPlayer().getItemInHand().getType());
+        MaterialData d = event.getPlayer().getItemInHand().getData();
+        bl.setData(d.getData());
 
         event.setCancelled(true);
     }
