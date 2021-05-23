@@ -1,9 +1,12 @@
 package dev.pace.painter;
 
-import jdk.nashorn.internal.ir.Block;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.util.BlockIterator;
 
 public class PlayerInteract implements Listener {
 
@@ -22,22 +25,21 @@ public class PlayerInteract implements Listener {
             return;
         if (!plugin.getPainters().contains(event.getPlayer()))
             return;
-        if (event.getPlayer().rayTraceBlocks(50) == null)
-            return;
+
+        traceBlock(event.getPlayer());
 
         event.setCancelled(true);
     }
-    private Block traceBlock(CommandSender sender, Player target, boolean fromTarget) throws CommandException {
-        Player source = getSource(sender, target, fromTarget);
-        BlockIterator it = new BlockIterator(source);
+    private Block traceBlock(Player target) {
+        BlockIterator it = new BlockIterator(target, 50);
         int i = 0;
-        while (it.hasNext() && i < MAX_TRACE_DISTANCE) {
+        while (it.hasNext() && i < 50) {
             Block block = it.next();
             if (block.getType() != Material.AIR) {
                 return block;
             }
             i++;
         }
-        throw new CommandException("Not currently looking at a block that is close enough.");
+        return null;
     }
 }
