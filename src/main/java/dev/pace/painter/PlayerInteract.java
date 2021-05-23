@@ -26,8 +26,18 @@ public class PlayerInteract implements Listener {
             return;
 
         event.setCancelled(true);
-
-        Block block = (Block) event.getPlayer().rayTraceBlocks(50).getHitBlock();
-        ((org.bukkit.block.Block) block).setType(event.getItem().getType());
+    }
+    private Block traceBlock(CommandSender sender, Player target, boolean fromTarget) throws CommandException {
+        Player source = getSource(sender, target, fromTarget);
+        BlockIterator it = new BlockIterator(source);
+        int i = 0;
+        while (it.hasNext() && i < MAX_TRACE_DISTANCE) {
+            Block block = it.next();
+            if (block.getType() != Material.AIR) {
+                return block;
+            }
+            i++;
+        }
+        throw new CommandException("Not currently looking at a block that is close enough.");
     }
 }

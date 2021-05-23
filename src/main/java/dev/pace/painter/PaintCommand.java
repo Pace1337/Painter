@@ -18,6 +18,7 @@ public class PaintCommand implements CommandExecutor {
         // Console
         sender.sendMessage("Only players are allowed to run this command.");
         return true;
+        //TODO Add player permission so it cannot be abused.
     }
     Player player = (Player) sender;
     if (plugin.hasPainters()) {
