@@ -26,7 +26,8 @@ public class PlayerInteract implements Listener {
         if (!plugin.getPainters().contains(event.getPlayer()))
             return;
 
-        traceBlock(event.getPlayer());
+        Block bl = traceBlock(event.getPlayer());
+        bl.setType(event.getPlayer().getItemInHand().getType());
 
         event.setCancelled(true);
     }
