@@ -27,6 +27,8 @@ public class PlayerInteract implements Listener {
             return;
 
         Block bl = traceBlock(event.getPlayer());
+        if(bl == null)
+            return;
         bl.setType(event.getPlayer().getItemInHand().getType());
 
         event.setCancelled(true);
