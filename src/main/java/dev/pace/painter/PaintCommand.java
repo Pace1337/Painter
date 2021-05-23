@@ -29,6 +29,7 @@ public class PaintCommand implements CommandExecutor {
             return true;
         }
     }
+    // monkey
     plugin.addPainter(player);
     player.sendMessage(ChatColor.GREEN + "You are now able to paint.");
     return true;
