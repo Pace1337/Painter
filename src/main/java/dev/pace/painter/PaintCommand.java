@@ -20,8 +20,10 @@ public class PaintCommand implements CommandExecutor {
         return true;
     }
     Player player = (Player) sender;
-    if (!player.hasPermission("paint.use")||!player.isOp())
-        return true;
+        if (!player.hasPermission("paint.use")||!player.isOp()) {
+            player.sendMessage(ChatColor.RED + "You do not have permission to execute this command, contact server administrators if you believe this is an error.");
+            return true;
+        }
     if (plugin.hasPainters()) {
         if (plugin.getPainters().contains(player)) {
             // Remove the painting player.

@@ -1,7 +1,7 @@
 name: Painter
 version: ${project.version}
 main: dev.pace.painter.Painter
-api-version: 1.13
+api-version: 1.16
 commands:
   Paint:
     description: Paint command.
