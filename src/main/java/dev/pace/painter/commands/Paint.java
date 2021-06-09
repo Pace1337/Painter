@@ -1,21 +1,21 @@
-package dev.pace.painter;
+package dev.pace.painter.commands;
 
+import dev.pace.painter.Painter;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class PaintCommand implements CommandExecutor {
+public class Paint implements CommandExecutor {
 
     private Painter plugin;
-    public PaintCommand(Painter plugin) {
+    public Paint(Painter plugin) {
         this.plugin = plugin;
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
     if (!(sender instanceof Player)) {
-        // Console.
         sender.sendMessage("Only players are allowed to run this command.");
         return true;
     }

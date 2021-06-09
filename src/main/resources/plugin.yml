@@ -1,5 +1,5 @@
 name: Painter
-version: ${project.version}
+version: 0.4
 main: dev.pace.painter.Painter
 api-version: 1.16
 commands:
@@ -7,3 +7,7 @@ commands:
     description: Paint command.
   Painter:
     description: Painting alternative command.
+  painthelp:
+    description: Shows all commands and help for the plugin.
+    aliases:
+      - painterhelp

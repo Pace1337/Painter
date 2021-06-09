@@ -1,10 +1,14 @@
 package dev.pace.painter;
 
+import dev.pace.painter.commands.Paint;
+import dev.pace.painter.commands.PainterHelp;
+import dev.pace.painter.events.PlayerInteract;
+import dev.pace.painter.updatechecker.UpdateChecker;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public final class Painter extends JavaPlugin {
 
@@ -12,10 +16,20 @@ public final class Painter extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        this.getCommand("paint").setExecutor(new PaintCommand(this));
-        this.getCommand("painter").setExecutor(new PaintCommand(this));
+        this.getCommand("paint").setExecutor(new Paint(this));
+        this.getCommand("painter").setExecutor(new Paint(this));
         this.getServer().getPluginManager().registerEvents(new PlayerInteract(this), this);
-        // Register all commands and register the PlayerInteract event.
+        getCommand("painthelp").setExecutor(new PainterHelp(this));
+        getCommand("painterhelp").setExecutor(new PainterHelp(this));
+        Logger logger = this.getLogger();
+
+        new UpdateChecker(this, 92651).getVersion(version -> {
+            if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
+                logger.info("Painter is up to date!");
+            } else {
+                logger.info("New update available for Painter. https://www.spigotmc.org/resources/painter.92651/");
+            }
+        });
     }
 
     @Override

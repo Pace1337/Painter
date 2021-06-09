@@ -1,5 +1,6 @@
-package dev.pace.painter;
+package dev.pace.painter.events;
 
+import dev.pace.painter.Painter;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
