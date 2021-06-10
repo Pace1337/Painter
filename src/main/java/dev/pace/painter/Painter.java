@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 public final class Painter extends JavaPlugin {
 
-    private List<Player> painters = new ArrayList<Player>();
+    private final List<Player> painters = new ArrayList<Player>();
 
     @Override
     public void onEnable() {
@@ -22,6 +22,8 @@ public final class Painter extends JavaPlugin {
         getCommand("painthelp").setExecutor(new PainterHelp(this));
         getCommand("painterhelp").setExecutor(new PainterHelp(this));
         Logger logger = this.getLogger();
+        int pluginId = 11632;
+        Metrics metrics = new Metrics(this, 11632);
 
         new UpdateChecker(this, 92651).getVersion(version -> {
             if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
